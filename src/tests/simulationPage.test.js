@@ -2,18 +2,27 @@ import { createLocalVue, mount } from '@vue/test-utils'
 import simulationPage from '@/components/pages/simulationPage'
 import BootstrapVue from 'bootstrap-vue'
 import VueI18n from 'vue-i18n'
+import translation from '@/translation.json'
 
 const localVue = createLocalVue()
 
 localVue.use(BootstrapVue)
-localVue.use(VueI18n)
+
+const messages = translation
+
+const i18n = new VueI18n({
+  locale: 'fr',
+  fallbackLocale: 'fr',
+  messages
+})
 
 describe('All the simulation rules', () => {
   let wrapper
 
   beforeAll(() => {
     wrapper = mount(simulationPage, {
-      localVue
+      localVue,
+      i18n
     })
   })
 

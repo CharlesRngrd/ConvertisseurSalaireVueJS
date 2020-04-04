@@ -33,7 +33,6 @@
     "eslint-plugin-vue": "^6.1.2",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.2.6",
-    "vue-i18n-jest": "^0.1.1",
     "vue-jest": "^3.0.5",
     "vue-template-compiler": "^2.6.11"
   },
@@ -62,7 +61,7 @@
       "vue"
     ],
     "transform": {
-      "^.+\\.vue$": "vue-i18n-jest",
+      "^.+\\.vue$": "vue-jest",
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
     },
     "moduleNameMapper": {
