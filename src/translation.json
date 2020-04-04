@@ -1,0 +1,260 @@
+{
+  "fr": {
+    "common": {
+      "yes": "OUI",
+      "no": "NON"
+    },
+    "layout": {
+      "title": "Je calcule mon salaire en intérim",
+      "linkSimulation": "Simuler son salaire",
+      "linkUnderstanding": "Comprendre son salaire",
+      "linkLegalNotice": "- Mentions Légales -"
+    },
+    "simulation": {
+      "rate": "Taux horaire brut",
+      "minimumWage": "SMIC",
+      "weeklyHours": "Nombre d'heures hebdo",
+      "weeklyHoursThreshold": "avec des heures supplémentaires à partir de",
+      "weeklyHoursSurcharge": "avec une majoration des heures supplémentaires de",
+      "thirteenthMonth": "13e mois",
+      "ticket": "Tickets restaurant",
+      "ticketAmount": "Montant du ticket",
+      "ticketDetail": "ATTENTION : pour simplifier, on considère que la part salariale des tickets restaurant vaut 50% du ticket",
+      "primes": "Primes et avantages",
+      "primeOptions": {
+        "dayly": "Quotidienne",
+        "weekly": "Hebdomadaire",
+        "monthly": "Mensuelle"
+      },
+      "addPrime": "Ajouter une prime",
+      "baseSalary": "Salaire net de base",
+      "baseSalaryTip": "Si la mission dure plusieurs mois, voilà ce qu'on gagne si le contrat n'est pas terminé. Car le 13e mois, les IFP et congés payés sont versés à la fin de la mission",
+      "endMission": "IFM",
+      "payedHolidays": "Congés payés",
+      "totalSalary": "Salaire net total",
+      "totalSalaryTip": "Voilà ce qu'on gagne en moyenne en prenant en compte le 13e mois, les IFM et les congés payés"
+    },
+    "legalNotice": {
+      "title": "Mentions Légales",
+      "content": [
+        {
+          "label": "Propriétaire et éditeur du site :",
+          "text": [
+            "Prénom Nom",
+            "Adresse",
+            "Téléphone",
+            "Email"
+          ]
+        },
+        {
+          "label": "Directeur de la publication :",
+          "text": [
+            "Prénom Nom"
+          ]
+        },
+        {
+          "label": "Hébergeur :",
+          "text": [
+            "Hébergeur",
+            "SIRENT",
+            "Adresse"
+          ]
+        }
+      ]
+    },
+    "understanding": [
+      {
+        "title": "Comprendre son salaire",
+        "content": [
+          {
+            "label": "Les particularités de l'intérim",
+            "text": [
+              "La rémunération de l'intérimaire doit être égale (après période d'essai) à celle d'un salarié qui occupe le même poste avec la même qualification. A chaque fin de mois, la société de travail temporaire doit récupérer le nombre d'heures effectuées par l'intérimaire. C'est pour cela que la paie arrive tardivement, généralement le 12 du mois suivant. En fin de contrat, l' intérimaire perçoit une indemnité de congés payés et une indemnité de fin de mission."
+            ]
+          },
+          {
+            "label": "Salaire brut / salaire net",
+            "text": [
+              "Le salarié est soumis à des cotisations salariales pour contribuer à la sécurité sociale, la retraite, le chômage... Au total, le montant des cotisations salariales représente 23 % du salaire brut (soit 30 % du salaire net)."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Le saviez-vous ?",
+        "content": [
+          {
+            "label": null,
+            "text": [
+              "Le SMIC brut horaire est de 9,76€ en 2017. Cela donne un salaire net de 1 149,07 € par mois pour un emploi à temps plein."
+            ]
+          }
+        ]
+      },
+      {
+        "title": null,
+        "content": [
+          {
+            "label": "Les heures supplémentaires",
+            "text": [
+              "La majoration minimum des heures supplémentaires est de 10%. A défaut d'accord ou de convention, la majoration est de 25% jusqu'à 43 heures puis 50% au delà."
+            ]
+          },
+          {
+            "label": "13e mois",
+            "text": [
+              "Certains contrats prévoient le paiement d'un 13e mois de salaire. Il peut être versé soit en fin de contrat, soit au prorata à chaque fin de mois."
+            ]
+          },
+          {
+            "label": "Les Indemnités de Fin de Mission",
+            "text": [
+              "Les indemnités de fin de mission sont versées pour compenser la précarité du contrat en intérim. Elles sont versées à chaque fin de contrat et non pas à chaque fin de mois. Le montant des IFM est de 10% de la rémunération totale de la mission. Attention, les IFM ne sont pas versées dans les cas suivants : si l'intérimaire est embauché en CDI ; lors des missions de formation ; si la mission prend fin pour faute grave ou force majeure ; si l'intérimaire met fin au contrat ; pour les contrats saisonniers."
+            ]
+          },
+          {
+            "label": "Les congés payés",
+            "text": [
+              "Comme les IFM, les congés payés sont versés à chaque fin de contrat. Leur montant est de 10% de la rémunération totale (y compris les IFM)."
+            ]
+          },
+          {
+            "label": "Les jours fériés",
+            "text": [
+              "Les jours fériés sont dus aux salariés intérimaires dès lors qu’ils sont payés aux salariés de l’entreprise utilisatrice, sans aucune condition d’ancienneté et si l’intérimaire a travaillé la veille et le lendemain du jour férié."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "en": {
+    "common": {
+      "yes": "YES",
+      "no": "NO"
+    },
+    "layout": {
+      "title": "I calculate my interim salary",
+      "linkSimulation": "Simulate my salary",
+      "linkUnderstanding": "Understand my salary",
+      "linkLegalNotice": "- Legal Notice -"
+    },
+    "simulation": {
+      "rate": "Gross hourly rate",
+      "minimumWage": "Minimum Wage",
+      "weeklyHours": "Weekly Hours",
+      "weeklyHoursThreshold": "with overtime from",
+      "weeklyHoursSurcharge": "with an overtime surcharge of",
+      "thirteenthMonth": "13th Month",
+      "ticket": "Restaurant coupon",
+      "ticketAmount": "Coupon Amount",
+      "ticketDetail": "PLEASE NOTE: for simplicity, we consider that the salary share of restaurant tickets is 50% of the ticket",
+      "primes": "Premiums and benefits",
+      "primeOptions": {
+        "dayly": "Dayly",
+        "weekly": "Weekly",
+        "monthly": "Monthly"
+      },
+      "addPrime": "Add a premiums",
+      "baseSalary": "Basic net salary",
+      "baseSalaryTip": "If the mission lasts several months, this is what that we win if the contract is not finished. Because the 13th month, IFPs and holidays paid are paid at the end of the mission",
+      "endMission": "End of mission",
+      "payedHolidays": "Payed holidays",
+      "totalSalary": "Total net salary",
+      "totalSalaryTip": "This is what we earn on average by taking into account the 13th month, IFM and paid holidays"
+    },
+    "legalNotice": {
+      "title": "Legal Notice",
+      "content": [
+        {
+          "label": "Site owner and editor:",
+          "text": [
+            "Firstname Lastname",
+            "Adress",
+            "Phone",
+            "Email"
+          ]
+        },
+        {
+          "label": "Publication Director :",
+          "text": [
+            "Firstname Lastname"
+          ]
+        },
+        {
+          "label": "Host :",
+          "text": [
+            "Host",
+            "SIRENT",
+            "Adress"
+          ]
+        }
+      ]
+    },
+    "understanding": [
+      {
+        "title": "Understand my salary",
+        "content": [
+          {
+            "label": "The particularities of temporary work",
+            "text": [
+              "The remuneration of the temporary worker must be equal (after trial period) to that of an employee who occupies the same position with the same qualification. At the end of each month, the temporary employment agency must recover the number of hours worked by the temporary worker. This is why the pay arrives late, generally on the 12th of the following month. At the end of the contract, the temporary worker receives an indemnity for paid holidays and an indemnity at the end of the mission."
+            ]
+          },
+          {
+            "label": "Gross salary / net salary",
+            "text": [
+              "The employee is subject to employee contributions to contribute to social security, retirement, unemployment ... In total, the amount of employee contributions represents 23% of gross salary (or 30% of net salary)."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Did you know ?",
+        "content": [
+          {
+            "label": null,
+            "text": [
+              "The gross hourly minimum wage was € 9.76 in 2017. This gives a net salary of € 1,149.07 per month for full-time employment."
+            ]
+          }
+        ]
+      },
+      {
+        "title": null,
+        "content": [
+          {
+            "label": "Extra time",
+            "text": [
+              "The minimum overtime increase is 10%. In the absence of an agreement or agreement, the increase is 25% up to 43 hours then 50% beyond."
+            ]
+          },
+          {
+            "label": "13th month",
+            "text": [
+              "Some contracts provide for the payment of a 13th month salary. It can be paid either at the end of the contract, or pro rata at the end of each month."
+            ]
+          },
+          {
+            "label": "End of Mission Allowances",
+            "text": [
+              "End-of-mission allowances are paid to compensate for the precariousness of the temporary contract. They are paid at the end of each contract and not at the end of each month. The amount of IFM is 10% of the mission's total remuneration. Please note, MFIs are not paid in the following cases: if the temporary worker is hired on a permanent contract; during training missions; if the mission ends for gross negligence or force majeure; if the temporary worker terminates the contract; for seasonal contracts."
+            ]
+          },
+          {
+            "label": "Paid holidays",
+            "text": [
+              "Like IFM, paid holidays are paid at the end of each contract. Their amount is 10% of the total remuneration (including IFM)."
+            ]
+          },
+          {
+            "label": "Public holidays",
+            "text": [
+              "Public holidays are due to temporary workers as soon as they are paid to the employees of the user company, without any seniority condition and if the temporary worker worked the day before and the day after the public holiday."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
