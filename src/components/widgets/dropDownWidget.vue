@@ -1,10 +1,10 @@
 <template>
   <div>
-    <b-dropdown :id="name" :text="variable[1].toString()">
+    <b-dropdown :id="variable" :text="this.$store.state.userInputs[variable].toString()">
       <b-dropdown-item
         v-for="(item, i) in options"
         :id="'option' + item"
-        @click="selectOption([variable[0], item])" :key="`items${i}`" :value="item">
+        @click="selectOption(variable, item)" :key="`items${i}`" :value="item">
         {{ item }}
       </b-dropdown-item>
     </b-dropdown>
@@ -12,28 +12,22 @@
 </template>
 
 <script>
-import { bus } from '@/main'
-
 export default {
   name: "dropDownWidget",
   props: {
     variable: {
       requiered: true,
-      type: Array
+      type: String
     },
     options: {
       requiered: true,
       type: Array
-    },
-    name: {
-      requiered: true,
-      type: String
     }
   },
   methods: {
-    selectOption(variable) {
-      console.log("emit selectOption with " + variable)
-      bus.$emit('selectOption', variable)
+    selectOption(variable, item) {
+      console.log("emit select option " + item + " for " + variable)
+      this.$store.commit('selectOption', [variable, item]);
     }
   },
 }

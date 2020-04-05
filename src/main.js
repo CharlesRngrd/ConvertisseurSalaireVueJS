@@ -5,6 +5,7 @@ import Routes from './routes'
 import LayoutPlugin  from 'bootstrap-vue'
 import VueI18n from 'vue-i18n'
 import translation from './translation.json'
+import { store } from './store/store';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faQuestionCircle, faExclamationCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -34,11 +35,10 @@ const i18n = new VueI18n({
   messages
 })
 
-export const bus = new Vue()
-
 new Vue({
   i18n,
   el: '#app',
+  store: store,
   render: h => h(App),
   router: router
 }).$mount('#app')

@@ -5,35 +5,38 @@
       <input type="text" class="form-control"
         v-model="inputValue"
         :name="inputValue"
-        :id="variable[0]"/>
+        :id="variable"/>
       <span class="input-group-addon right">€</span>
     </div>
   </div>
 </template>
 
 <script>
-import { bus } from '@/main'
-
 export default {
   name: "inputWidget",
   props: {
     variable: {
       required: true,
-      type: Array
+      type: String
     },
     appearance: {
       required: false,
       type: String
     }
   },
+  methods: {
+    updateInput(variable, val) {
+      console.log("emit update input " + variable + " to " + val)
+      this.$store.commit('updateInput', [variable, val]);
+    }
+  },
   computed: {
     inputValue: {
       get: function() {
-        return this.variable[1]
+        return this.$store.state.userInputs[this.variable]
       },
       set: function(val) {
-        console.log("emit updateInput " + this.variable[0] + " with " + val)
-        bus.$emit("updateInput", [this.variable[0], val])
+        this.updateInput(this.variable, val)
       }
     }
   },

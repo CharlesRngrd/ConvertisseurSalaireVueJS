@@ -1,24 +1,22 @@
 <template>
   <div>
     <input type="radio"
-      :id="primeIndex.toString()+'-'+optionIndex.toString()"
+      :id="rowIndex.toString() + '-' + optionIndex.toString()"
       :value="optionIndex.toString()">
     <label
-      :class="isChecked(optionIndex.toString(), variable[1])"
-      :id="'radio' + '-' + primeIndex.toString()+'-'+optionIndex.toString()"
-      :for="primeIndex.toString()+'-'+ optionIndex.toString()"
-      @click="updateRadio(variable, optionIndex)"
+      :class="isChecked(optionIndex.toString(),this.$store.state.userInputs[variable][rowIndex]['type'])"
+      :id="'radio' + '-' + rowIndex.toString() + '-' + optionIndex.toString()"
+      :for="rowIndex.toString() + '-' + optionIndex.toString()"
+      @click="updateRadio(variable, rowIndex, optionIndex)"
     ></label>
   </div>
 </template>
 
 <script>
-import { bus } from '@/main'
-
 export default {
   name: "radioWidget",
   props: {
-    primeIndex: {
+    rowIndex: {
       requiered: true,
       type: Number
     },
@@ -28,7 +26,7 @@ export default {
     },
     variable: {
       requiered: true,
-      type: Array
+      type: String
     }
   },
   methods: {
@@ -37,9 +35,10 @@ export default {
         return "selected"
       }
     },
-    updateRadio(variable, value) {
-      console.log("emit updateRadio with " + [this.variable[0], value])
-      bus.$emit("updateRadio", [this.variable[0], value])
+    updateRadio(variable, rowIndex, optionIndex) {
+      console.log("emit update radio " + variable + " for row " + rowIndex +
+        " with option " + optionIndex)
+      this.$store.commit("updateRadio", [variable, rowIndex, optionIndex])
     }
   }
 }

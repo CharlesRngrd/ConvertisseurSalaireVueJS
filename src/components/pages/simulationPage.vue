@@ -10,7 +10,7 @@
           </span>
         </b-col>
         <b-col cols="4" class="right">
-          <input-widget :variable="['rate', userInputs.rate]"></input-widget>
+          <input-widget variable="rate"></input-widget>
         </b-col>
       </b-row>
 
@@ -19,9 +19,7 @@
           <label class="tall">{{ $t('simulation.weeklyHours') }}</label>
         </b-col>
         <b-col cols="4" class="right">
-          <input-widget
-            :variable="['weeklyHours', userInputs.weeklyHours]">
-          </input-widget>
+          <input-widget variable="weeklyHours"></input-widget>
         </b-col>
       </b-row>
 
@@ -32,9 +30,9 @@
               <label>{{ $t('simulation.weeklyHoursThreshold') }}</label>
             </b-col>
             <b-col cols="5" class="right">
-              <drop-down-widget name="weeklyHoursThreshold"
-                :options="params.weeklyHoursThresholdOptions"
-                :variable="['weeklyHoursThreshold', userInputs.weeklyHoursThreshold]">
+              <drop-down-widget
+                :options="$store.state.params.weeklyHoursThresholdOptions"
+                variable="weeklyHoursThreshold">
               </drop-down-widget>
             </b-col>
           </b-row>
@@ -43,9 +41,9 @@
               <label>{{ $t('simulation.weeklyHoursSurcharge') }}</label>
             </b-col>
             <b-col cols="5" class="right">
-              <drop-down-widget name="weeklyHoursSurcharge"
-                :options="params.weeklyHoursSurchargeOptions"
-                :variable="['weeklyHoursSurcharge', userInputs.weeklyHoursSurcharge]">
+              <drop-down-widget
+                :options="$store.state.params.weeklyHoursSurchargeOptions"
+                variable="weeklyHoursSurcharge">
               </drop-down-widget>
             </b-col>
           </b-row>
@@ -57,8 +55,7 @@
           <label class="tall">{{ $t('simulation.thirteenthMonth') }}</label>
         </b-col>
         <b-col cols="4" class="right">
-          <switch-widget :variable="['isThirteenthMonth', userInputs.isThirteenthMonth]">
-          </switch-widget>
+          <switch-widget variable="isThirteenthMonth"></switch-widget>
         </b-col>
       </b-row>
 
@@ -67,20 +64,18 @@
           <label class="tall">{{ $t('simulation.ticket') }}</label>
         </b-col>
         <b-col cols="4" class="right">
-          <switch-widget :variable="['isTicket', userInputs.isTicket]"></switch-widget>
+          <switch-widget variable="isTicket"></switch-widget>
         </b-col>
       </b-row>
 
-      <b-collapse id="tickets" :visible="userInputs.isTicket">
+      <b-collapse id="tickets" :visible="$store.state.userInputs.isTicket">
         <bloc-detail-layout>
           <b-row>
             <b-col cols="7">
               <label>{{ $t('simulation.ticketAmount') }}</label>
             </b-col>
             <b-col cols="4" class="right">
-              <input-widget appearance="darkBlue"
-                :variable="['ticketAmount', userInputs.ticketAmount]">
-              </input-widget>
+              <input-widget appearance="darkBlue" variable="ticketAmount"></input-widget>
             </b-col>
           </b-row>
           <b-row>
@@ -99,41 +94,35 @@
           <label class="tall">{{ $t('simulation.primes') }}</label>
         </b-col>
         <b-col cols="4" class="right">
-          <switch-widget :variable="['isPrime', userInputs.isPrime]"></switch-widget>
+          <switch-widget variable="isPrime"></switch-widget>
         </b-col>
       </b-row>
 
-      <b-collapse id="primes" :visible="userInputs.isPrime">
+      <b-collapse id="primes" :visible="$store.state.userInputs.isPrime">
         <bloc-detail-layout>
           <b-row>
             <b-col>
 
               <table>
                 <tr>
-                  <th v-for="(option, optionIndex) in params.primeOptions"
+                  <th v-for="(option, optionIndex) in $store.state.params.primeOptions"
                     :key="optionIndex + '-label'">
                     <label>{{ $t('simulation.primeOptions')[option] }}</label>
                   </th>
                 </tr>
 
-                <tr v-for="(prime, primeIndex) in userInputs.primes" :key="primeIndex">
-                  <td v-for="(option, optionIndex) in params.primeOptions"
+                <tr v-for="(prime, primeIndex) in $store.state.userInputs.primes" :key="primeIndex">
+                  <td v-for="(option, optionIndex) in $store.state.params.primeOptions"
                     :key="optionIndex + '-type'">
                     <radio-widget
-                      :primeIndex="primeIndex"
+                      :rowIndex="primeIndex"
                       :optionIndex="optionIndex"
-                      :variable="[
-                        'primes' + '-' + primeIndex,
-                        userInputs.primes[primeIndex]['type']
-                      ]"
+                      variable="primes"
                     ></radio-widget>
                   </td>
                   <td>
                     <input-widget appearance="darkBlue"
-                      :variable="[
-                        'primes' + '-' + primeIndex,
-                        userInputs.primes[primeIndex]['amount']
-                      ]"
+                      :variable="'primes' + '-' + primeIndex"
                     ></input-widget>
                   </td>
                 </tr>
@@ -187,7 +176,6 @@
 </template>
 
 <script>
-import { bus } from '@/main'
 import resultContent from '../contents/resultContent.vue'
 import level2BlocLayout from '../layouts/level2BlocLayout.vue'
 import level3BlocDetailLayout from '../layouts/level3BlocDetailLayout.vue'
@@ -207,61 +195,26 @@ export default {
     'radio-widget': radioWidget,
     'switch-widget': switchWidget
   },
-  data() {
-    return {
-      userInputs: {
-        rate: null,
-        weeklyHours: 35,
-        weeklyHoursThreshold: 35,
-        weeklyHoursSurcharge: 25,
-        isThirteenthMonth: false,
-        isTicket: false,
-        isPrime: false,
-        primes: [
-          {
-            type: 0,
-            amount: 0
-          },
-          {
-            type: 0,
-            amount: 0
-          },
-        ],
-        ticketAmount: 0,
-      },
-      params: {
-        hoursPerMonth: 151.67,
-        wageCosts: 0.23,
-        weeklyHoursThresholdOptions: [35, 37.5, 38, 38.5, 39],
-        weeklyHoursSurchargeOptions: [10, 15, 20, 25, 30, 35, 40, 45, 50],
-        primeOptions: [
-          "dayly",
-          "weekly",
-          "monthly"
-        ]
-      }
-    }
-  },
   computed: {
     displayOvertime() {
-      return this.userInputs.weeklyHours > 35 ? true : false
+      return this.$store.state.userInputs.weeklyHours > 35 ? true : false
     },
     wage() {
       return (
-        this.userInputs.rate *
-        this.params.hoursPerMonth *
-        (1 - this.params.wageCosts) *
-        (this.userInputs.weeklyHours / 35)
+        this.$store.state.userInputs.rate *
+        this.$store.state.params.hoursPerMonth *
+        (1 - this.$store.state.params.wageCosts) *
+        (this.$store.state.userInputs.weeklyHours / 35)
       )
     },
     wageOvertime() {
-      if (this.userInputs.weeklyHours > this.userInputs.weeklyHoursThreshold) {
+      if (this.$store.state.userInputs.weeklyHours > this.$store.state.userInputs.weeklyHoursThreshold) {
         return (
-          this.userInputs.rate *
-          (this.params.hoursPerMonth / 35) *
-          (1 - this.params.wageCosts) *
-          (this.userInputs.weeklyHours - this.userInputs.weeklyHoursThreshold) *
-          (this.userInputs.weeklyHoursSurcharge / 100)
+          this.$store.state.userInputs.rate *
+          (this.$store.state.params.hoursPerMonth / 35) *
+          (1 - this.$store.state.params.wageCosts) *
+          (this.$store.state.userInputs.weeklyHours - this.$store.state.userInputs.weeklyHoursThreshold) *
+          (this.$store.state.userInputs.weeklyHoursSurcharge / 100)
         )
       }
       else {
@@ -269,9 +222,9 @@ export default {
       }
     },
     wageTicket() {
-      if (this.userInputs.isTicket) {
+      if (this.$store.state.userInputs.isTicket) {
         return (
-          this.userInputs.ticketAmount * this.params.hoursPerMonth / 7 * 0.5
+          this.$store.state.userInputs.ticketAmount * this.$store.state.params.hoursPerMonth / 7 * 0.5
         )
       }
       else {
@@ -280,20 +233,20 @@ export default {
     },
     wagePrime() {
       var wagePrimeTotal = 0
-      for(var i = 0; i < this.userInputs.primes.length; i++) {
+      for(var i = 0; i < this.$store.state.userInputs.primes.length; i++) {
         // Compute the base prime amount
         var wagePrimeCurrent = (
-          this.userInputs.primes[i].amount *
-          (1 - this.params.wageCosts)
+          this.$store.state.userInputs.primes[i].amount *
+          (1 - this.$store.state.params.wageCosts)
         )
 
         // Apply the frequency of the given prime
-        switch(this.userInputs.primes[i].type) {
+        switch(this.$store.state.userInputs.primes[i].type) {
           case 0:
-            wagePrimeCurrent = wagePrimeCurrent * this.params.hoursPerMonth / 7
+            wagePrimeCurrent = wagePrimeCurrent * this.$store.state.params.hoursPerMonth / 7
             break
           case 1:
-            wagePrimeCurrent = wagePrimeCurrent * this.params.hoursPerMonth / 35
+            wagePrimeCurrent = wagePrimeCurrent * this.$store.state.params.hoursPerMonth / 35
             break
           case 2:
             wagePrimeCurrent = wagePrimeCurrent * 1
@@ -303,7 +256,7 @@ export default {
         wagePrimeTotal += wagePrimeCurrent
       }
 
-      if (!this.userInputs.isPrime) {
+      if (!this.$store.state.userInputs.isPrime) {
         wagePrimeTotal = 0
       }
 
@@ -316,7 +269,7 @@ export default {
       return Math.round(this.wage + this.wageOvertime - this.wageTicket + this.wagePrime)
     },
     thirteenthMonth(){
-      return Math.round(this.userInputs.isThirteenthMonth ? (this.wage / 12) : 0)
+      return Math.round(this.$store.state.userInputs.isThirteenthMonth ? (this.wage / 12) : 0)
     },
     ifm() {
       return Math.round((this.salary + this.thirteenthMonth) / 10)
@@ -330,46 +283,13 @@ export default {
   },
   methods: {
     minimumWage() {
-      console.log('set rate to 9.76')
-      this.userInputs.rate = 9.76
+      console.log('emit set rate to 9.76')
+      this.$store.commit('minimumWage')
     },
     addItem() {
-      console.log('adding prime')
-      this.userInputs.primes.push({
-        type: 0,
-        amount: 0
-      })
+      console.log('emit adding prime')
+      this.$store.commit('addItem')
     }
-  },
-  created() {
-    bus.$on('updateInput', (data) => {
-      console.log("updateInput " + data[0] + " set to " + data[1].toString())
-      // Cas particulier pour les primes qui est une liste
-      if (data[0].includes("prime")) {
-        this.userInputs.primes[data[0].charAt(data[0].length - 1)].amount = Number(data[1])
-      }
-      else {
-        this.userInputs[data[0]] = Number(data[1])
-      }
-    })
-    bus.$on('switch', (data) => {
-      console.log("switch" + data[0] + " to " + !data[1])
-      this.userInputs[data[0]] = !data[1]
-    })
-    bus.$on('selectOption', (data) => {
-      console.log("select option for " + data[0] + ", value is " + data[1])
-      this.userInputs[data[0]] = data[1]
-    })
-    bus.$on('updateRadio', (data) => {
-      console.log("updateRadio " + data[0] + " set to " + data[1].toString())
-      // Cas particulier pour les primes qui est une liste
-      if (data[0].includes("prime")) {
-        this.userInputs.primes[data[0].charAt(data[0].length - 1)].type = data[1]
-      }
-      else {
-        this.userInputs[data[0]] = data[1]
-      }
-    })
   },
 }
 </script>

@@ -1,10 +1,10 @@
 <template>
   <div class="onoffswitch">
     <input  type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
-      :id="variable[0]"
-      v-model="variable[1]"
-      @click="toogle(variable)"/>
-      <label class="onoffswitch-label" :for="variable[0]">
+      :id="variable"
+      v-model="$store.state.userInputs[variable]"
+      @click="toogleSwitch(variable)"/>
+      <label class="onoffswitch-label" :for="variable">
         <span class="onoffswitch-inner-on">{{ $t('common.yes') }}</span>
         <span class="onoffswitch-inner-off">{{ $t('common.no') }}</span>
         <span class="onoffswitch-switch"></span>
@@ -13,20 +13,18 @@
 </template>
 
 <script>
-import { bus } from '@/main'
-
 export default {
   name: "switchWidget",
   props: {
     variable: {
       required: true,
-      type: Array
+      type: String
     }
   },
   methods: {
-    toogle(variable) {
-      console.log("emit switch with " + variable)
-      bus.$emit('switch', variable)
+    toogleSwitch(variable) {
+      console.log("emit switch " + variable + " to " + !this.$store.state.userInputs[variable])
+      this.$store.commit('toogleSwitch', variable);
     }
   },
 }
