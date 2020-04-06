@@ -184,6 +184,8 @@ import inputWidget from '../widgets/inputWidget.vue'
 import radioWidget from '../widgets/radioWidget.vue'
 import switchWidget from '../widgets/switchWidget.vue'
 
+import {mapGetters} from 'vuex';
+
 export default {
   name: "simulationPage",
   components: {
@@ -199,87 +201,18 @@ export default {
     displayOvertime() {
       return this.$store.state.userInputs.weeklyHours > 35 ? true : false
     },
-    wage() {
-      return (
-        this.$store.state.userInputs.rate *
-        this.$store.state.params.hoursPerMonth *
-        (1 - this.$store.state.params.wageCosts) *
-        (this.$store.state.userInputs.weeklyHours / 35)
-      )
-    },
-    wageOvertime() {
-      if (this.$store.state.userInputs.weeklyHours > this.$store.state.userInputs.weeklyHoursThreshold) {
-        return (
-          this.$store.state.userInputs.rate *
-          (this.$store.state.params.hoursPerMonth / 35) *
-          (1 - this.$store.state.params.wageCosts) *
-          (this.$store.state.userInputs.weeklyHours - this.$store.state.userInputs.weeklyHoursThreshold) *
-          (this.$store.state.userInputs.weeklyHoursSurcharge / 100)
-        )
-      }
-      else {
-        return 0
-      }
-    },
-    wageTicket() {
-      if (this.$store.state.userInputs.isTicket) {
-        return (
-          this.$store.state.userInputs.ticketAmount * this.$store.state.params.hoursPerMonth / 7 * 0.5
-        )
-      }
-      else {
-        return 0
-      }
-    },
-    wagePrime() {
-      var wagePrimeTotal = 0
-      for(var i = 0; i < this.$store.state.userInputs.primes.length; i++) {
-        // Compute the base prime amount
-        var wagePrimeCurrent = (
-          this.$store.state.userInputs.primes[i].amount *
-          (1 - this.$store.state.params.wageCosts)
-        )
-
-        // Apply the frequency of the given prime
-        switch(this.$store.state.userInputs.primes[i].type) {
-          case 0:
-            wagePrimeCurrent = wagePrimeCurrent * this.$store.state.params.hoursPerMonth / 7
-            break
-          case 1:
-            wagePrimeCurrent = wagePrimeCurrent * this.$store.state.params.hoursPerMonth / 35
-            break
-          case 2:
-            wagePrimeCurrent = wagePrimeCurrent * 1
-            break
-        }
-
-        wagePrimeTotal += wagePrimeCurrent
-      }
-
-      if (!this.$store.state.userInputs.isPrime) {
-        wagePrimeTotal = 0
-      }
-
-      return wagePrimeTotal
-    },
-    salary() {
-      return Math.round(this.wage + this.wageOvertime)
-    },
-    salaryWithPrimes() {
-      return Math.round(this.wage + this.wageOvertime - this.wageTicket + this.wagePrime)
-    },
-    thirteenthMonth(){
-      return Math.round(this.$store.state.userInputs.isThirteenthMonth ? (this.wage / 12) : 0)
-    },
-    ifm() {
-      return Math.round((this.salary + this.thirteenthMonth) / 10)
-    },
-    cp() {
-      return Math.round((this.salary + this.thirteenthMonth + this.ifm) / 10)
-    },
-    salaryTotal() {
-      return Math.round(this.salaryWithPrimes + this.thirteenthMonth + this.ifm + this.cp)
-    }
+    ...mapGetters([
+      'wage',
+      'wageOvertime',
+      'wageTicket',
+      'wagePrime',
+      'salary',
+      'salaryWithPrimes',
+      'thirteenthMonth',
+      'ifm',
+      'cp',
+      'salaryTotal'
+    ]),
   },
   methods: {
     minimumWage() {

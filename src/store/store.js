@@ -38,6 +38,93 @@ export const store = new Vuex.Store({
         ticketAmount: 0,
       }
     },
+    getters: {
+      wage: (state) => {
+        return (
+          state.userInputs.rate *
+          state.params.hoursPerMonth *
+          (1 - state.params.wageCosts) *
+          (state.userInputs.weeklyHours / 35)
+        )
+      },
+      wageOvertime: (state) => {
+        if (state.userInputs.weeklyHours > state.userInputs.weeklyHoursThreshold) {
+          return (
+            state.userInputs.rate *
+            (state.params.hoursPerMonth / 35) *
+            (1 - state.params.wageCosts) *
+            (state.userInputs.weeklyHours - state.userInputs.weeklyHoursThreshold) *
+            (state.userInputs.weeklyHoursSurcharge / 100)
+          )
+        }
+        else {
+          return 0
+        }
+      },
+      wageTicket: (state) => {
+        if (state.userInputs.isTicket) {
+          return (
+            state.userInputs.ticketAmount * state.params.hoursPerMonth / 7 * 0.5
+          )
+        }
+        else {
+          return 0
+        }
+      },
+      wagePrime: (state) => {
+        var wagePrimeTotal = 0
+        for(var i = 0; i < state.userInputs.primes.length; i++) {
+          // Compute the base prime amount
+          var wagePrimeCurrent = (
+            state.userInputs.primes[i].amount *
+            (1 - state.params.wageCosts)
+          )
+
+          // Apply the frequency of the given prime
+          switch(state.userInputs.primes[i].type) {
+            case 0:
+              wagePrimeCurrent = wagePrimeCurrent * state.params.hoursPerMonth / 7
+              break
+            case 1:
+              wagePrimeCurrent = wagePrimeCurrent * state.params.hoursPerMonth / 35
+              break
+            case 2:
+              wagePrimeCurrent = wagePrimeCurrent * 1
+              break
+          }
+
+          wagePrimeTotal += wagePrimeCurrent
+        }
+
+        if (!state.userInputs.isPrime) {
+          wagePrimeTotal = 0
+        }
+
+        return wagePrimeTotal
+      },
+      salary: (state, getters) => {
+        return Math.round(getters.wage + getters.wageOvertime)
+      },
+      salaryWithPrimes: (state, getters) => {
+        return Math.round(
+          getters.wage + getters.wageOvertime - getters.wageTicket + getters.wagePrime
+        )
+      },
+      thirteenthMonth: (state, getters) => {
+        return Math.round(state.userInputs.isThirteenthMonth ? (getters.wage / 12) : 0)
+      },
+      ifm: (state, getters) => {
+        return Math.round((getters.salary + getters.thirteenthMonth) / 10)
+      },
+      cp: (state, getters) => {
+        return Math.round((getters.salary + getters.thirteenthMonth + getters.ifm) / 10)
+      },
+      salaryTotal: (state, getters) => {
+        return Math.round(
+          getters.salaryWithPrimes + getters.thirteenthMonth + getters.ifm + getters.cp
+        )
+      }
+    },
     mutations: {
       minimumWage: (state) => {
         console.log('process set rate to 9.76')
