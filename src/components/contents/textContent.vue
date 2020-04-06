@@ -29,7 +29,7 @@ export default {
   props: {
     content: {
       required: true,
-      type: String
+      type: Object
     },
     appearance: {
       required: true,

@@ -1,5 +1,7 @@
 import { createLocalVue, mount } from '@vue/test-utils'
 import simulationPage from '@/components/pages/simulationPage'
+import VueRouter from 'vue-router'
+import Routes from '@/routes'
 import LayoutPlugin from 'bootstrap-vue'
 import VueI18n from 'vue-i18n'
 import translation from '@/translation.json'
@@ -12,9 +14,15 @@ library.add(faQuestionCircle, faExclamationCircle, faPlusCircle)
 
 const localVue = createLocalVue()
 
+localVue.use(VueRouter)
 localVue.use(LayoutPlugin)
 localVue.use(VueI18n)
 localVue.component('font-awesome-icon', FontAwesomeIcon)
+
+const router = new VueRouter({
+    routes: Routes,
+    mode: 'history'
+})
 
 const messages = translation
 
@@ -31,6 +39,7 @@ describe('All the simulation rules', () => {
     wrapper = mount(simulationPage, {
       localVue,
       i18n,
+      router,
       store
     })
   })
