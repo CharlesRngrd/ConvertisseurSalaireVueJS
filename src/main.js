@@ -5,7 +5,7 @@ import Routes from './routes'
 import LayoutPlugin  from 'bootstrap-vue'
 import VueI18n from 'vue-i18n'
 import translation from './translation.json'
-import { store } from './store/store';
+import { store } from './store/store'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faQuestionCircle, faExclamationCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'

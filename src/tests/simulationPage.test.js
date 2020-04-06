@@ -1,12 +1,20 @@
 import { createLocalVue, mount } from '@vue/test-utils'
 import simulationPage from '@/components/pages/simulationPage'
-import BootstrapVue from 'bootstrap-vue'
+import LayoutPlugin from 'bootstrap-vue'
 import VueI18n from 'vue-i18n'
 import translation from '@/translation.json'
+import { store } from '@/store/store'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faQuestionCircle, faExclamationCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faQuestionCircle, faExclamationCircle, faPlusCircle)
 
 const localVue = createLocalVue()
 
-localVue.use(BootstrapVue)
+localVue.use(LayoutPlugin)
+localVue.use(VueI18n)
+localVue.component('font-awesome-icon', FontAwesomeIcon)
 
 const messages = translation
 
@@ -22,7 +30,8 @@ describe('All the simulation rules', () => {
   beforeAll(() => {
     wrapper = mount(simulationPage, {
       localVue,
-      i18n
+      i18n,
+      store
     })
   })
 
@@ -113,11 +122,21 @@ describe('All the simulation rules', () => {
     checkOutput([1300, 111, 147, 161, 1719])
   })
 
-  it('works with adding a prime', () => {
+  it('works with inserting a 3rd prime', () => {
     const buttonAddItem = wrapper.find('#addItem')
-    const primeNumber = wrapper.vm.userInputs.primes.length
+    const primeNumber = wrapper.vm.$store.state.userInputs.primes.length
     buttonAddItem.trigger('click')
 
-    expect(wrapper.vm.userInputs.primes.length).toBe(primeNumber + 1)
+    expect(wrapper.vm.$store.state.userInputs.primes.length).toBe(primeNumber + 1)
+  })
+
+  it('works with adding a weekly prime of 3', () => {
+    const inputPrime2 = wrapper.find('#primes-2')
+    const radio21 = wrapper.find('#radio-2-1')
+    radio21.trigger('click')
+    inputPrime2.element.value = 3
+    inputPrime2.trigger('input')
+
+    checkOutput([1310, 111, 147, 161, 1729])
   })
 })
