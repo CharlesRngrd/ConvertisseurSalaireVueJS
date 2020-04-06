@@ -29,6 +29,16 @@
           <b-row>
             <b-col>
 
+              <b-row class="position-relative">
+                <b-col>
+                  <a href="https://github.com/CharlesRngrd/ConvertisseurSalaireVueJS/tree/Vue+Vuex"
+                    class="link" target="blank">
+                    <font-awesome-icon :icon="['fab', 'github']" class="icon-2x"/>
+                    Fork me on Github
+                  </a>
+                </b-col>
+              </b-row>
+
               <slot />
 
             </b-col>
@@ -108,6 +118,17 @@ select {
   color: #6f6f6f;
   font-size: 120%;
   font-weight: bold;
+  padding-bottom: 1rem;
+}
+.icon-2x {
+  font-size: 180%;
+  position: relative;
+  top: 5px;
+  margin-right: 5px;
+  color: #6f6f6f !important;
+}
+path {
+  fill: #6f6f6f;
 }
 
 #title {
@@ -123,11 +144,8 @@ select {
 #content {
   z-index: 1;
   background: lightgrey;
-  padding-top: 12rem;
+  padding-top: 10rem;
   min-height: -webkit-fill-available;
-}
-#footer {
-  padding-bottom: 1rem;
 }
 
 @media screen and (max-width:992px) {

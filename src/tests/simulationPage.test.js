@@ -8,9 +8,10 @@ import translation from '@/translation.json'
 import { store } from '@/store/store'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faQuestionCircle, faExclamationCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faQuestionCircle, faExclamationCircle, faPlusCircle)
+library.add(faQuestionCircle, faExclamationCircle, faPlusCircle, faGithub)
 
 const localVue = createLocalVue()
 
