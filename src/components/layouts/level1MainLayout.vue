@@ -49,6 +49,7 @@
               <router-link to="/mentions" exact class="link">
                 {{ $t("layout.linkLegalNotice") }}
               </router-link>
+              <br><br>
             </b-col>
           </b-row>
         </b-col>
