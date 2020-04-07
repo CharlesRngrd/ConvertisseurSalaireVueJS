@@ -19,6 +19,12 @@ Ce repository contient 2 branches :
 - une version avec Vue
 - une version avec Vue + Vuex
 
+## Organisation des composants dans la page principale ##
+
+<p align="center">
+  <img src="https://github.com/CharlesRngrd/ConvertisseurSalaireVueJS/blob/Vue%2BVuex/public/documentation.png">
+</p>
+
 ### Project setup
 ```
 npm install
