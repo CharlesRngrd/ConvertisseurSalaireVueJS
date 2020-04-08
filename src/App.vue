@@ -23,4 +23,15 @@ export default {
   font-size: 1.5rem;
   margin: 0;
 }
+@media(max-width:576px) {
+  .xtall {
+    font-size: 1.6rem;
+  }
+  .tall {
+    font-size: 1.2rem;
+  }
+  a, p, label {
+    font-size: 0.9rem;
+  }
+}
 </style>

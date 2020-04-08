@@ -3,7 +3,8 @@
     <b-container fluid>
       <select v-model="$root.$i18n.locale">
         <option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang">
-          {{ lang }}</option>
+          {{ lang }}
+        </option>
       </select>
 
       <b-row class="white fixed-top" id="title">
@@ -33,8 +34,7 @@
                 <b-col>
                   <a href="https://github.com/CharlesRngrd/ConvertisseurSalaireVueJS/tree/Vue+Vuex"
                     class="link" target="blank">
-                    <font-awesome-icon :icon="['fab', 'github']" class="icon-2x"/>
-                    Fork me on Github
+                    <font-awesome-icon :icon="['fab', 'github']" class="icon-2x"/>Fork me on Github
                   </a>
                 </b-col>
               </b-row>
@@ -80,6 +80,7 @@ h1 {
 }
 select {
   position: fixed;
+  background: #fff;
   top: 1rem;
   right: 2rem;
   z-index: 1001;
@@ -169,6 +170,10 @@ path {
   }
   select {
     top: 3.5rem;
+  }
+  .icon-2x {
+    font-size: 120%;
+    top: 2px;
   }
 }
 </style>

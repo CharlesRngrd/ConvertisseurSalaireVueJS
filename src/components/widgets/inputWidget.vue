@@ -66,6 +66,8 @@ export default {
 .form-control:hover, .form-control:active, .form-control:focus {
   background-color: #fff !important;
   color: #2769d1 !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
 }
 .input-group-addon {
   display: flex;
@@ -99,12 +101,15 @@ export default {
 @media(max-width:576px) {
   .form-control {
     width: 5rem;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   .input-group {
     width: 5rem !important;
   }
-  .input-group-addon[data-v-dab5fb24] {
-    width: 25px;
+  .input-group-addon {
+    width: 23px;
+    padding-left: 7px;
   }
 }
 </style>

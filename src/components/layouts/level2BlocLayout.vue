@@ -51,7 +51,6 @@ export default {
 }
 .text {
   color: #5c5c5c;
-  font-size: 110%;
   font-family: arial;
   text-align: justify;
   margin: 0;

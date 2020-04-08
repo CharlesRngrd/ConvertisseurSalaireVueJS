@@ -39,9 +39,11 @@ export default {
 }
 /deep/ .btn-secondary.dropdown-toggle,
 /deep/ .btn-secondary.dropdown-toggle:hover,
+/deep/ .btn-secondary.dropdown-toggle:focus,
+/deep/ .btn-secondary.dropdown-toggle:active,
 /deep/ .show > .btn-secondary.dropdown-toggle {
-  background-color: #1b509f;
-  border-color: #fff;
+  background-color: #1b509f !important;
+  border-color: #fff !important;
   border: solid 2px;
   color: #fff;
   outline: none;

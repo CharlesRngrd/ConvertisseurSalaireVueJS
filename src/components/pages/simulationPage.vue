@@ -74,7 +74,7 @@
             <b-col cols="7">
               <label>{{ $t('simulation.ticketAmount') }}</label>
             </b-col>
-            <b-col cols="4" class="right">
+            <b-col cols="5" class="right">
               <input-widget appearance="darkBlue" variable="ticketAmount"></input-widget>
             </b-col>
           </b-row>
@@ -228,6 +228,9 @@ export default {
 </script>
 
 <style>
+table {
+  width: 100%;
+}
 th, tr {
   text-align: center;
   width: 15rem;
@@ -265,6 +268,7 @@ th, tr {
   color: #2769d1;
   background-color: #fff;
   border-radius: 5px;
+  white-space: nowrap;
 }
 #addItem {
   padding-top: 2rem;
@@ -275,8 +279,8 @@ th, tr {
   .tall {
     margin-top: 0rem;
   }
-  #minimumWage {
-    margin-left: 0rem;
+  .input-container.darkBlue {
+    padding-right: 0;
   }
   table {
     margin-top: 1rem;

@@ -34,7 +34,7 @@ export default {
 .onoffswitch {
   position: relative;
   display: inline-block;
-  width: 90px;
+  width: 70px;
   top: 1rem;
   text-align: initial;
   -webkit-user-select: none;
@@ -63,7 +63,7 @@ export default {
   display: none;
   background-color: #FFF;
   color: #2769d1;
-  margin-left: 50px;
+  margin-left: 35px;
 }
 .onoffswitch-inner-off {
   display: inline;
@@ -96,12 +96,20 @@ export default {
   background-color: #fff
 }
 .onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
-  right: 56px;
+  right: 40px;
 }
 
-@media(max-width:576px) {
+@media(max-width:768px) {
   .onoffswitch {
     top: 0.5rem;
+  }
+}
+@media(max-width:576px) {
+  .onoffswitch-inner-on, .onoffswitch-inner-off {
+    top: 2px;
+  }
+  .onoffswitch {
+    top: 0rem;
   }
 }
 </style>
